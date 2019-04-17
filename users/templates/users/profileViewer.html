@@ -1,0 +1,30 @@
+{% extends "blog/base.html" %}
+{% block content %}
+    <div class="content-section">
+        <div class="media">
+            <img class="rounded-circle account-img" src="{{ user.profile.image.url }}">
+            <div class="media-body">
+                <h2 class="account-heading">{{ user.username }}</h2>
+            </div>
+        </div>
+        <!-- FORM HERE -->
+        <form action="/profile/">
+            {% csrf_token %}
+            <legend class="border-bottom mb-4">Profile Info</legend>
+            <div>
+                <h6>Bio:</h6>
+                <p>{{ user.profile.bio }}</p>
+
+            </div>
+            <h6>Instrument:</h6><p> {{ user.profile.instrument }}</p>
+            <div>
+                <h6>City:</h6>
+                <p>{{ user.profile.city }}</p>
+            </div>
+
+
+            <div class="form-group">
+                <button class="btn btn-outline-info" type="submit">Update Info</button>
+            </div>
+        </form>
+    </div>{% endblock content %}

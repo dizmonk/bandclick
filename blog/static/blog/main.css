@@ -12,6 +12,13 @@ ul {
   margin: 0;
 }
 
+.logo{
+  font-size: 100px;
+
+  color: white;
+  top: 50%;
+  left: 50%;
+}
 .music_img{
   background-image: url("/media/musical_background.jpg");
 }

@@ -14,6 +14,10 @@
             {% csrf_token %}
             <fieldset class="form-group">
                 <legend class="border-bottom mb-4">Profile Info</legend>
+                {{ user.profile.instrument }}
+                                {{ user.profile.bio }}
+                {{ user.profile.city }}
+
                 {{ u_form|crispy }}
                 {{ p_form|crispy }}
             </fieldset>
