@@ -12,16 +12,16 @@
             {% csrf_token %}
             <legend class="border-bottom mb-4">Profile Info</legend>
             <div>
-                <h6>Bio:</h6>
+                <h6 class="border-bottom mb-4">Bio:</h6>
                 <p>{{ user.profile.bio }}</p>
 
             </div>
-            <h6>Instrument:</h6><p> {{ user.profile.instrument }}</p>
+            <h6 class="border-bottom mb-4">Instrument:</h6>
+            <p> {{ user.profile.instrument }}</p>
             <div>
-                <h6>City:</h6>
+                <h6 class="border-bottom mb-4">City:</h6>
                 <p>{{ user.profile.city }}</p>
             </div>
-
 
             <div class="form-group">
                 <button class="btn btn-outline-info" type="submit">Update Info</button>
