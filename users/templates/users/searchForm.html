@@ -2,20 +2,10 @@
 {% load crispy_forms_tags %}
 {% block content %}
     <div class="content-section">
-        <form method="POST">
-            {% csrf_token %}
+        <form method="GET" action="/searchForm/">
             <fieldset class="form-group">
-                <legend class="border-bottom mb-4">Seach Users</legend>
-                {{ form|crispy}}
-            </fieldset>
-            <div class="form-group">
-                <button class="btn btn-outline-info" type="submit">Sign Up</button>
-            </div>
+                Search By City:<input type="text" name="q" id="id_content" value="{{ query }}">
+\            </fieldset>
         </form>
-    <div class="border-top pt-3">
-        <small class="text-muted">
-            Already Have An Account? <a class="ml-2" href="{% url 'login' %}">Sign In</a>
-        </small>
-    </div>
     </div>
 {% endblock content %}

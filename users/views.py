@@ -8,6 +8,8 @@ from django.contrib import messages
 from .models import Profile
 from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm
 from django.contrib.auth.decorators import login_required
+from django.template import RequestContext
+from django.shortcuts import render_to_response
 
 
 def register(request):
@@ -51,11 +53,7 @@ def profile(request):
     return render(request, 'users/profile.html', context)
 
 
-def profileSearch(request):
-    context = {
-        'posts':Profile.objects.all()
-    }
-    return render(request, 'users/profileSearch.html', context)
+
 
 
 class ProfileListView(ListView):
@@ -63,9 +61,10 @@ class ProfileListView(ListView):
     template_name = 'users/profileSearch.html'
     context_object_name = 'posts'
     ordering = ['-date_posted']
-    paginate_by = 3
+    paginate_by = 4
 
 
 class ProfileDetailView(DetailView):
     model = Profile
+
 
