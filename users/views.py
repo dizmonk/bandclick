@@ -2,6 +2,7 @@ from django.shortcuts import render
 
 # Create your views here.
 from django.contrib.auth.models import User
+from django.views.generic import ListView, DetailView
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from .models import Profile
@@ -55,3 +56,16 @@ def profileSearch(request):
         'posts':Profile.objects.all()
     }
     return render(request, 'users/profileSearch.html', context)
+
+
+class ProfileListView(ListView):
+    model = Profile
+    template_name = 'users/profileSearch.html'
+    context_object_name = 'posts'
+    ordering = ['-date_posted']
+    paginate_by = 3
+
+
+class ProfileDetailView(DetailView):
+    model = Profile
+
