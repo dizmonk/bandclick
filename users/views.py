@@ -8,8 +8,7 @@ from django.contrib import messages
 from .models import Profile
 from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm
 from django.contrib.auth.decorators import login_required
-from django.template import RequestContext
-from django.shortcuts import render_to_response
+from .filters import ProfileFilter
 
 
 def register(request):
@@ -53,15 +52,18 @@ def profile(request):
     return render(request, 'users/profile.html', context)
 
 
-
-
-
 class ProfileListView(ListView):
     model = Profile
     template_name = 'users/profileSearch.html'
     context_object_name = 'posts'
     ordering = ['-date_posted']
     paginate_by = 4
+
+    def get_queryset(self):
+        qs = self.model.objects.all()
+        profile_filtered_list = ProfileFilter(self.request.GET, queryset=qs)
+        return profile_filtered_list.qs
+
 
 
 class ProfileDetailView(DetailView):

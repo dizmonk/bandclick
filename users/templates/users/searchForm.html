@@ -1,11 +1,12 @@
 {% extends "blog/base.html" %}
-{% load crispy_forms_tags %}
+{% load bootstrap%}
+{% block title %}Profile List{% endblock title %}
 {% block content %}
-    <div class="content-section">
-        <form method="GET" action="/searchForm/">
-            <fieldset class="form-group">
-                Search By City:<input type="text" name="q" id="id_content" value="{{ query }}">
-\            </fieldset>
-        </form>
-    </div>
+
+    {{ filter.form|bootstrap }}
+
+    <ul>
+
+    </ul>
+
 {% endblock content %}
